@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "PRODUCTION",
+    "version": "1.0",
+    "permissions": ["scripting", "storage", "activeTab", "cookies"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "Extracts usefull info."
+    }
+}
